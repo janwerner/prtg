@@ -1,7 +1,15 @@
-#!/bin/bash
+#! /usr/bin/env bash
+
+#title           : prtg-freenas-smart-status.sh
+#description     : PRTG SSH custom sensor to check S.M.A.R.T. status for FreeNAS physical drives
+#author          : Jan Werner
+#date            : 2019-08-02
+#version         : 0.1
+#usage           : Upload to /var/prtg/scriptsxml on FreeNAS host and create 'SSH Advanced' sensor in PRTG
+#notes           : Modify 'array' to suit your needs
+#==============================================================================
 #
-# SSH-based EXEXML sensor (SSH Advanced)
-# Upload script to FreeNAS host to /var/prtg/scriptsxml
+#
 #
 # Drives Array
 array=( ada0 ada1 ada2 ada3 ada4 ada5 )
@@ -13,9 +21,9 @@ function smart_extract {
 
 if [ $SMARTRESULT == 'PASSED' ]
 then
-  HEALTH=TRUE
+  HEALTH=1
 else
-  HEALTH=FALSE
+  HEALTH=0
 fi
 
 }
@@ -32,7 +40,6 @@ echo -n "   <result>
        <channel>$MODEL ($SERIAL) ($i)</channel>
        <value>$HEALTH</value>
        <ValueLookup>prtg.standardlookups.boolean.statetrueok</ValueLookup>
-
    </result>
 "
 done
