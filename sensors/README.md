@@ -1,3 +1,5 @@
 # Various bash scripts to be used with PRTG's Custom SSH sensors
 
-* prtg-freenas-smart-status.sh: Check S.M.A.R.T. status for FreeNAS physical drives
+* prtg-md-raid-state.sh: Get Linux Software Raid (MD) health state using mdadm
+* prtg-smart-health.sh: Get S.M.A.R.T. disk health status using smartctl
+* prtg-smart-status.sh: Get detailed S.M.A.R.T. disk health values using smartctl
