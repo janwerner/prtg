@@ -12,7 +12,7 @@
 #
 #
 # Drives Array
-array=( ada0 ada1 ada2 ada3 ada4 ada5 )
+array=( array=( "$@" )
 
 function smart_extract {
    MODEL=`smartctl -i /dev/$1 | sed -En 's/Device Model:[ \s]*//gp'`
